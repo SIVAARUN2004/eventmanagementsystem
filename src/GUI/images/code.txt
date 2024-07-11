@@ -1,0 +1,24 @@
+if(!jCheckBox2.isSelected())
+            JOptionPane.showMessageDialog(null, "To continue accept terms and conditions");
+        else
+        {
+            try
+            {   String st1=jTextField5.getText();
+                int st2=st1.length();
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmerdata","root","");
+                Statement stmt = con.createStatement();
+                String str1 = null;
+                if(jRadioButton1.isSelected())
+                    str1 = jRadioButton1.getText();
+                if(jRadioButton2.isSelected())
+                    str1 =  jRadioButton2.getText();
+            if(st2 == 10){String q1 = "insert into register values('" +jTextField1.getText()+"','"+jTextField2.getText()+"','"+str1+"','"+jTextField3.getText()+"','" +jTextField4.getText()+"','"+jTextField5.getText()+"','"+jTextField6.getText()+"','"+p1t.getText()+"')";
+            stmt.executeUpdate(q1);
+            JOptionPane.showMessageDialog(null,"Farmer Data has Added");    
+            }
+            else{jLabel6.setVisible(true);}}
+            catch(Exception e)
+            {
+            JOptionPane.showMessageDialog(null,"Enter Correct Data");
+            }
+        }   
